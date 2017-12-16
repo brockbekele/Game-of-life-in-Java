@@ -35,15 +35,12 @@ public class GolSkandium {
 	}
 
 	public void execute()throws Exception {
-		System.out.println("**Computing Game of Life  Threads = " + THREADS + ", Matrix Size = "
-				+ MATRIX_SIZE + "X" + MATRIX_SIZE +  " no generation " + ngen );
-
+		System.out.println("**Computing Game of Life  Threads = " + THREADS + ", Matrix Size = "+ MATRIX_SIZE + "X" + MATRIX_SIZE +  " no generation " + ngen );
 		if(seedBool==1){
-           generateseed(seed);
-           
-        } else {
-         	generate();
-        }
+			generateseed(seed);
+		} else {
+			generate();
+		}
 		
 		Skandium skandium = new Skandium( THREADS);
 		Skeleton<Interval, Interval> map = new Map<Interval, Interval>(new Splitter(THREADS), new Worker(),
@@ -51,12 +48,13 @@ public class GolSkandium {
 
 		Skeleton<Interval, Interval> whileSkeleton = new While<Interval>(map, new Cond());
 		Stream<Interval, Interval> stream = skandium.newStream(whileSkeleton);
-	    Interval input = new Interval(1, MATRIX_SIZE);
-	    Future<Interval> future = stream.input(input);
+	        Interval input = new Interval(1, MATRIX_SIZE);
+	        Future<Interval> future = stream.input(input);
 		long init = System.currentTimeMillis();
+		
 		try {
 			input = future.get();
-        } catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		System.out.println("**Computing Time in " + (System.currentTimeMillis() - init) + "[ms]");
@@ -75,7 +73,8 @@ public class GolSkandium {
 	public static void generate() {
 		Matrix.matrix = new int[MATRIX_SIZE + 2][MATRIX_SIZE + 2];
 		Random r = new Random();
-        try {
+		
+		try {
 			for (int ii = 0; ii < MATRIX_SIZE; ii++) {
 				for (int jj = 0; jj < MATRIX_SIZE; jj++) {
 					byte number = (byte) (Math.abs(r.nextInt()) % 2);
@@ -104,11 +103,10 @@ public class GolSkandium {
 			Matrix.matrix[Matrix.matrix.length - 1][0] = Matrix.matrix[1][Matrix.matrix.length - 2];
 			Matrix.matrix[0][Matrix.matrix.length - 1] = Matrix.matrix[Matrix.matrix.length - 2][1];
 			Matrix.matrix[Matrix.matrix.length - 1][Matrix.matrix.length - 1] = Matrix.matrix[1][1];
-
+		
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
 	}
 		
 		public static void generateseed(long seed) {
@@ -134,7 +132,7 @@ public class GolSkandium {
 					Matrix.matrix[i][0] = Matrix.matrix[i][Matrix.matrix.length - 2]; // leftmost
 				}
 				// Used for the ghost row
-                for (int j = 1; j < Matrix.matrix.length; j++) {
+				for (int j = 1; j < Matrix.matrix.length; j++) {
 					Matrix.matrix[Matrix.matrix.length - 1][j] = Matrix.matrix[1][j];
 					Matrix.matrix[0][j] = Matrix.matrix[Matrix.matrix.length - 2][j];
 				}
@@ -144,16 +142,9 @@ public class GolSkandium {
 				Matrix.matrix[Matrix.matrix.length - 1][0] = Matrix.matrix[1][Matrix.matrix.length - 2];
 				Matrix.matrix[0][Matrix.matrix.length - 1] = Matrix.matrix[Matrix.matrix.length - 2][1];
 				Matrix.matrix[Matrix.matrix.length - 1][Matrix.matrix.length - 1] = Matrix.matrix[1][1];
-
+			
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
-
-		
-		
-
-	}
-		
-		
-		
+		}
 }
