@@ -6,16 +6,12 @@ package spm.GameOfLifeProject;
  * and open the template in the editor.
  */
 
-
-
-
 /**
  *
  * @author biruk
  */
 public class GOL {
 
-    
     /**
      * @param args the command line arguments
      * 
@@ -43,7 +39,5 @@ public class GOL {
         // TODO code application logic here
         System.out.println("Done with Matrix size: " + m.matrix_size + " x " + m.matrix_size + " with Generation: " + Golboard.ngen  );
         System.out.println ("Computation Time : " + (endTime - time) + "[ms]");
-    }
-
-    
+	}
 }
