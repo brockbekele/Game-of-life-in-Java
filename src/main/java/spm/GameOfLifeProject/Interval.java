@@ -2,7 +2,7 @@ package spm.GameOfLifeProject;
 
 public class Interval {
 	public  int a;
-    public  int b;
+        public  int b;
     /**
      * Constructor method used to set the start and no of the row that one
      * worker can update
@@ -11,12 +11,12 @@ public class Interval {
      * @param b used to indicate the no  of the row */
     
     public Interval(int a, int b){
-    	this.a = a;
-        this.b = b;
+	    this.a = a;
+            this.b = b;
     }
     
     // @Override
-    public String toString(){
-        return "("+a+", "+b+")";
+    public String toString() {
+	    return "("+a+", "+b+")";
     }
 }
