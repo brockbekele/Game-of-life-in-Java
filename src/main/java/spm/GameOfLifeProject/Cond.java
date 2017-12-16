@@ -15,11 +15,10 @@ public class Cond implements Condition<Interval> {
     
     @Override
     public boolean condition(Interval p) throws Exception {
-        
-    		if (Merger.maxGene >=0) {
-    			return true;
-    		} else {
-    			return false;
-    			}
+        if (Merger.maxGene >=0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
