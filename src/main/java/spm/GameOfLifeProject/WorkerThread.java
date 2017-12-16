@@ -21,23 +21,22 @@ public class WorkerThread implements Runnable {
     private final CyclicBarrier barrier;
 	
     public WorkerThread(Golboard b, int startRows, int size, int gen,CyclicBarrier barrier) {
-		board = b; 
-        start = startRows;
-        matrix_size = size;
-        ngen = gen;
-		this.barrier = barrier;
+	    board = b; 
+	    start = startRows;
+	    matrix_size = size;
+            ngen = gen;
+	    this.barrier = barrier;
     }
 
     @Override
     public void run() {
-		
-		for (int i = 0; i <=ngen; i++) {
-			board.new_generation(start,matrix_size);  
-            try {
-				barrier.await();
-			} catch (InterruptedException | BrokenBarrierException ex) {
-				
-			}
-		}
-	}
+	    for (int i = 0; i <=ngen; i++) {
+		    board.new_generation(start,matrix_size);  
+		    
+		    try {
+			    barrier.await();
+		    } catch (InterruptedException | BrokenBarrierException ex) {
+		    }
+	    }
+    }
 }
