@@ -30,7 +30,7 @@ public class Main {
 		Type = Integer.parseInt(args[0]);
 		BOARD = Integer.parseInt(args[1]);
 		seedon= Integer.parseInt(args[2]);
-	    seed = Integer.parseInt(args[3]);
+	    	seed = Integer.parseInt(args[3]);
 		
 		if (Type == 1  && seedon == 1){
 			if (args.length != 5) {
@@ -45,13 +45,13 @@ public class Main {
 		
 		} else if ( Type ==1 && seedon == 0 ){
 			
-		    if (args.length != 4) {
+			if (args.length != 4) {
 				errorMessage();
 			}
 			ngen= Integer.parseInt(args[3]);
 			GOL.seedBool = 0;
 			Golboard.ngen = ngen;
-		    GOL gol = new GOL(BOARD);
+		    	GOL gol = new GOL(BOARD);
 			gol.execute();
 			
 		} else if (Type == 2 && seedon == 1) {
@@ -60,9 +60,9 @@ public class Main {
 			}
 			ngen= Integer.parseInt(args[4]);
 			THREADS = Integer.parseInt(args[5]);
-		    GolThread.seedBool =1;
-		    GolThread.seed = seed;
-            GolThread multi = new GolThread(THREADS,ngen, BOARD);
+		    	GolThread.seedBool =1;
+		    	GolThread.seed = seed;
+            		GolThread multi = new GolThread(THREADS,ngen, BOARD);
 			multi.execute();
 			
 		} else if (Type == 2 && seedon == 0) {
